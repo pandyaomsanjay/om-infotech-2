@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up - OM INFOTECH</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo-container {
+    background: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+nav {
+    background: linear-gradient(135deg, #41ccd8 0%, #2a8d96 100%);
+    height: 70px;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.nav-links {
+    display: flex;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 30px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+nav a:hover, nav a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.auth-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: calc(100vh - 200px);
+}
+
+.auth-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.auth-card h2 {
+    color: #2a8d96;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #41ccd8;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(65, 204, 216, 0.1);
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 40px;
+    color: #666;
+    font-size: 18px;
+}
+
+.terms {
+    margin-top: 20px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.checkbox-label input {
+    margin-right: 10px;
+    margin-top: 2px;
+    width: auto;
+}
+
+.checkbox-label a {
+    color: #41ccd8;
+    text-decoration: none;
+}
+
+.checkbox-label a:hover {
+    text-decoration: underline;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #41ccd8 0%, #2a8d96 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(65, 204, 216, 0.3);
+}
+
+.auth-footer {
+    margin-top: 25px;
+    color: #666;
+}
+
+.auth-footer a {
+    color: #41ccd8;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.password-strength {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+.strength-weak { color: #f44336; }
+.strength-medium { color: #ff9800; }
+.strength-strong { color: #4CAF50; }
+
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+}
+
+.alert-success {
+    background: #4CAF50;
+}
+
+.alert-error {
+    background: #f44336;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav a {
+        margin: 5px;
+        padding: 8px 15px;
+        font-size: 16px;
+    }
+    
+    .auth-card {
+        padding: 30px 25px;
+        margin: 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="logo-container">
+    <img class="logo" src="https://i0.wp.com/ominfotechsales.com/wp-content/uploads/2022/12/ominfotech-removebg-preview.png?fit=995%2C251&ssl=1" alt="OM Infotech Logo">
+</div>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="event.html"><i class="fas fa-calendar-alt"></i> Events</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="login.html" id="authLink"><i class="fas fa-user"></i> Login</a>
+            <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+        </div>
+    </div>
+</nav>
+
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Create Your Account</h2>
+        <form id="signupForm" action="signup.php" method="POST">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+                <i class="fas fa-user input-icon"></i>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <i class="fas fa-envelope input-icon"></i>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+                <i class="fas fa-phone input-icon"></i>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required minlength="6">
+                <i class="fas fa-lock input-icon"></i>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <i class="fas fa-lock input-icon"></i>
+            </div>
+            <div class="form-group terms">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="terms" required>
+                    <span class="checkmark"></span>
+                    I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                </label>
+            </div>
+            <button type="submit" class="auth-btn">Create Account</button>
+        </form>
+        <div class="auth-footer">
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const signupForm = document.getElementById('signupForm');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+
+        // Check if user is already logged in
+        if (localStorage.getItem('currentUser')) {
+            window.location.href = 'profile.html';
+        }
+
+        // Update navigation
+        updateNavigation();
+
+        // Confirm password validation
+        confirmPasswordInput.addEventListener('input', function() {
+            if (confirmPasswordInput.value !== passwordInput.value) {
+                confirmPasswordInput.style.borderColor = '#f44336';
+            } else {
+                confirmPasswordInput.style.borderColor = '#4CAF50';
+            }
+        });
+
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(signupForm);
+            const userData = {
+                fullName: formData.get('fullName').trim(),
+                email: formData.get('email').trim(),
+                phone: formData.get('phone').trim(),
+                password: formData.get('password'),
+                confirmPassword: formData.get('confirmPassword')
+            };
+
+            // Validation
+            if (!validateForm(userData)) {
+                return;
+            }
+
+            // Register user
+            registerUser(userData);
+        });
+
+        function validateForm(data) {
+            // Check if all fields are filled
+            for (let key in data) {
+                if (!data[key]) {
+                    showAlert('Please fill in all fields', 'error');
+                    return false;
+                }
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                showAlert('Please enter a valid email address', 'error');
+                return false;
+            }
+
+            // Password confirmation
+            if (data.password !== data.confirmPassword) {
+                showAlert('Passwords do not match', 'error');
+                return false;
+            }
+
+            // Check if user already exists
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            if (users.find(user => user.email === data.email)) {
+                showAlert('An account with this email already exists', 'error');
+                return false;
+            }
+
+            return true;
+        }
+
+        function registerUser(userData) {
+            // Show loading state
+            const submitBtn = signupForm.querySelector('.auth-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Creating Account...';
+            submitBtn.disabled = true;
+
+            // Simulate API call delay
+            setTimeout(() => {
+                // Store user data
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                const newUser = {
+                    id: Date.now().toString(),
+                    fullName: userData.fullName,
+                    email: userData.email,
+                    phone: userData.phone,
+                    password: userData.password,
+                    createdAt: new Date().toISOString()
+                };
+                
+                users.push(newUser);
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                // Auto-login the user after signup
+                localStorage.setItem('currentUser', JSON.stringify(newUser));
+
+                showAlert('Account created successfully! Redirecting to profile...', 'success');
+
+                // Redirect to profile page
+                setTimeout(() => {
+                    window.location.href = 'profile.html';
+                }, 1500);
+            }, 1500);
+        }
+
+        function showAlert(message, type) {
+            const existingAlert = document.querySelector('.alert');
+            if (existingAlert) {
+                existingAlert.remove();
+            }
+
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alert.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+            `;
+
+            if (type === 'success') {
+                alert.style.background = '#4CAF50';
+            } else {
+                alert.style.background = '#f44336';
+            }
+
+            document.body.appendChild(alert);
+
+            setTimeout(() => {
+                alert.remove();
+            }, 3000);
+        }
+
+        // Update navigation based on login status
+        function updateNavigation() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const authLink = document.getElementById('authLink');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (currentUser) {
+                // Update auth links to profile
+                if (authLink) {
+                    authLink.innerHTML = '<i class="fas fa-user"></i> Profile';
+                    authLink.href = 'profile.html';
+                }
+                
+                // Check if logout button already exists
+                if (!document.getElementById('logoutBtn')) {
+                    const logoutLink = document.createElement('a');
+                    logoutLink.href = '#';
+                    logoutLink.id = 'logoutBtn';
+                    logoutLink.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
+                    logoutLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('currentUser');
+                        showAlert('Logged out successfully!', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1000);
+                    });
+                    
+                    navLinks.appendChild(logoutLink);
+                }
+            }
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+
+    confirmPassword.addEventListener('input', function() {
+        if (confirmPassword.value !== password.value) {
+            confirmPassword.style.borderColor = '#f44336';
+        } else {
+            confirmPassword.style.borderColor = '#4CAF50';
+        }
+    });
+
+    updateNavigation();
+
+    function updateNavigation() {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const authLink = document.getElementById('authLink');
+        if (currentUser && authLink) {
+            authLink.innerHTML = '<i class="fas fa-user"></i> Profile';
+            authLink.href = 'profile.html';
+        }
+    }
+});
+</script>
+</body>
+</html>

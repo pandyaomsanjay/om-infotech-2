@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeStorm Hackathon 2025 | OM INFOTECH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .event-hero {
+            background: linear-gradient(rgba(65, 204, 216, 0.8), rgba(7, 152, 255, 0.9)), url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .event-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .event-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .event-content {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .event-content h2 {
+            color: #2a8d96;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #41ccd8;
+        }
+        
+        .event-content h3 {
+            color: #2a8d96;
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+        }
+        
+        .event-content p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .event-content ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .event-content li {
+            margin-bottom: 8px;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .event-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(65, 204, 216, 0.1);
+            border-radius: 10px;
+        }
+        
+        .meta-item {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .meta-item h4 {
+            color: #2a8d96;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .meta-item p {
+            color: #555;
+            margin: 0;
+        }
+        
+        .prizes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .prize-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #41ccd8;
+        }
+        
+        .prize-card h4 {
+            color: #2a8d96;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .prize-card p {
+            color: #333;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .eligibility-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .eligibility-card {
+            background: rgba(65, 204, 216, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #41ccd8;
+        }
+        
+        .eligibility-card h4 {
+            color: #2a8d96;
+            margin-bottom: 10px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #41ccd8;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: #0798ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(7, 152, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #2a8d96;
+        }
+        
+        .btn-secondary:hover {
+            background: #1a6d75;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-info a {
+            color: #41ccd8;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            color: #0798ff;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .event-hero {
+                padding: 60px 15px;
+            }
+            
+            .event-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .event-content {
+                padding: 25px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .eligibility-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img class="logo" src="https://i0.wp.com/ominfotechsales.com/wp-content/uploads/2022/12/ominfotech-removebg-preview.png?fit=995%2C251&ssl=1" alt="OM Infotech Logo">
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="event.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="login.html" id="loginLink"><i class="fas fa-user"></i> Login</a>
+                <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="event-hero">
+        <div class="container">
+            <h1>CodeStorm Hackathon 2025</h1>
+            <p>Innovate with AI & Blockchain - A 48-Hour Coding Marathon</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="event-content">
+            <h2>About the Hackathon</h2>
+            <p>Welcome to <strong>CodeStorm Hackathon 2025</strong>, a thrilling 48-hour coding marathon organized by TechTrend Innovations in collaboration with Global AI & Blockchain Alliance. Join developers, innovators, and tech enthusiasts to build groundbreaking solutions addressing real-world challenges using AI and blockchain technologies.</p>
+            
+            <p>🚀 Compete in a dynamic environment to create innovative applications, smart contracts, or AI-driven solutions. Whether you're a seasoned coder or a passionate beginner, CodeStorm offers a platform to showcase your skills and collaborate with top talent.</p>
+            
+            <div class="event-meta">
+                <div class="meta-item">
+                    <h4><i class="fas fa-calendar"></i> Date</h4>
+                    <p>February 15-16, 2025</p>
+                </div>
+                <div class="meta-item">
+                    <h4><i class="fas fa-clock"></i> Duration</h4>
+                    <p>48 Hours</p>
+                </div>
+                <div class="meta-item">
+                    <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
+                    <p>Virtual + In-Person (TechHub, Bangalore)</p>
+                </div>
+                <div class="meta-item">
+                    <h4><i class="fas fa-users"></i> Team Size</h4>
+                    <p>Up to 4 members</p>
+                </div>
+            </div>
+            
+            <h3>Key Dates</h3>
+            <ul>
+                <li><strong>Registration Opens:</strong> October 1, 2024</li>
+                <li><strong>Registration Closes:</strong> January 15, 2025</li>
+                <li><strong>Challenge Announcement:</strong> January 20, 2025</li>
+                <li><strong>Hackathon Event:</strong> February 15-16, 2025</li>
+            </ul>
+            
+            <h3>Eligibility</h3>
+            <div class="eligibility-cards">
+                <div class="eligibility-card">
+                    <h4><i class="fas fa-user-check"></i> Who Can Apply</h4>
+                    <p>Open to students, developers, and tech enthusiasts (individuals or teams of up to 4 members)</p>
+                </div>
+                <div class="eligibility-card">
+                    <h4><i class="fas fa-graduation-cap"></i> Experience Level</h4>
+                    <p>No prior experience in AI or blockchain required, but enthusiasm for learning is a must!</p>
+                </div>
+                <div class="eligibility-card">
+                    <h4><i class="fas fa-birthday-cake"></i> Age Requirement</h4>
+                    <p>Participants must be 18+ years old</p>
+                </div>
+            </div>
+            
+            <h3>Prizes and Opportunities</h3>
+            <div class="prizes-grid">
+                <div class="prize-card">
+                    <h4>Grand Prize</h4>
+                    <p>₹1,00,000 + Tech Gadgets + Mentorship</p>
+                </div>
+                <div class="prize-card">
+                    <h4>Runner-Up</h4>
+                    <p>₹50,000 + Tech Gadgets + Certificates</p>
+                </div>
+                <div class="prize-card">
+                    <h4>Third Place</h4>
+                    <p>₹25,000 + Certificates</p>
+                </div>
+                <div class="prize-card">
+                    <h4>Special Mentions (x3)</h4>
+                    <p>₹10,000 each + Certificates</p>
+                </div>
+            </div>
+            
+            <div class="additional-opportunities">
+                <h4>Additional Opportunities</h4>
+                <ul>
+                    <li><strong>Top Teams:</strong> Opportunity to pitch to investors and incubators</li>
+                    <li><strong>All Participants:</strong> Digital Participation Certificate</li>
+                </ul>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="challenges.pdf" class="btn">View Challenges</a>
+                <a href="registere.html" class="btn">Register Now</a>
+                <a href="event.html" class="btn btn-secondary">Back to Events</a>
+            </div>
+            
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p><strong>Email:</strong> <a href="mailto:codestorm@techtrend.in">codestorm@techtrend.in</a></p>
+                <p><strong>Phone:</strong> <a href="tel:+919876543210">+91 9876543210</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Om Infotech</h3>
+                    <p>Empowering businesses with innovative IT solutions since 2022. Specializing in software development, web design, and IT consulting.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="login.html">Login</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> info@ominfotech.com</p>
+                    <p><i class="fas fa-phone"></i> +91 9328913412</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Murti complex, near Santram Mandir, Nadiad-387001</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Newsletter</h3>
+                    <p>Subscribe to our newsletter to get updates on our latest services and offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" style="padding:10px; width:100%; margin-bottom:10px; border-radius:5px; border:none;">
+                        <button type="submit" style="background:#41ccd8; color:white; border:none; padding:10px 15px; border-radius:5px; width:100%; cursor:pointer;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 OM Infotech. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    menuToggle.classList.toggle('active');
+                    
+                    // Toggle aria-expanded for accessibility
+                    const isExpanded = navLinks.classList.contains('active');
+                    menuToggle.setAttribute('aria-expanded', isExpanded);
+                });
+                
+                // Close mobile menu when clicking on a link
+                const navItems = navLinks.querySelectorAll('a');
+                navItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    const isClickInsideNav = navLinks.contains(event.target) || menuToggle.contains(event.target);
+                    if (!isClickInsideNav && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                
+                // Handle escape key to close menu
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+            
+            // Update navigation based on login status
+            updateNavigation();
+            
+            // Set active page highlighting
+            setActivePage();
+        });
+        
+        // Function to set active page in navigation
+        function setActivePage() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Update navigation based on login status
+        function updateNavigation() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const loginLink = document.getElementById('loginLink');
+            
+            if (currentUser && loginLink) {
+                // Replace login link with profile and logout
+                loginLink.innerHTML = '<i class="fas fa-user"></i> Profile';
+                loginLink.href = 'profile.html';
+                
+                // Check if logout button already exists
+                if (!document.getElementById('logoutBtn')) {
+                    const logoutLink = document.createElement('a');
+                    logoutLink.href = '#';
+                    logoutLink.id = 'logoutBtn';
+                    logoutLink.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
+                    logoutLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('currentUser');
+                        showAlert('Logged out successfully!', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1000);
+                    });
+                    
+                    document.getElementById('navLinks').appendChild(logoutLink);
+                }
+            } else {
+                // Ensure login link is restored if user logs out
+                const existingLoginLink = document.querySelector('a[href="profile.html"]');
+                if (existingLoginLink) {
+                    existingLoginLink.innerHTML = '<i class="fas fa-user"></i> Login';
+                    existingLoginLink.href = 'login.html';
+                    existingLoginLink.id = 'loginLink';
+                }
+                
+                // Remove logout button if exists
+                const logoutBtn = document.getElementById('logoutBtn');
+                if (logoutBtn) {
+                    logoutBtn.remove();
+                }
+            }
+            
+            // Re-set active page after navigation update
+            setActivePage();
+        }
+        
+        // Alert function
+        function showAlert(message, type) {
+            const existingAlert = document.querySelector('.alert');
+            if (existingAlert) {
+                existingAlert.remove();
+            }
+
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alert.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+            `;
+
+            if (type === 'success') {
+                alert.style.background = '#4CAF50';
+            } else {
+                alert.style.background = '#f44336';
+            }
+
+            document.body.appendChild(alert);
+
+            setTimeout(() => {
+                alert.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

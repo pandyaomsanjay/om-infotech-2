@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for Hackathon | OM INFOTECH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .registration-hero {
+            background: linear-gradient(rgba(65, 204, 216, 0.8), rgba(7, 152, 255, 0.9)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .registration-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .registration-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .registration-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .registration-form-container {
+            flex: 2;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .event-info-sidebar {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            align-self: flex-start;
+        }
+        
+        .registration-form-container h2 {
+            color: #2a8d96;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #41ccd8;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2a8d96;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-control:focus {
+            border-color: #41ccd8;
+            box-shadow: 0 0 0 2px rgba(65, 204, 216, 0.2);
+            outline: none;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .team-member {
+            background: rgba(65, 204, 216, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 3px solid #41ccd8;
+        }
+        
+        .team-member-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .remove-member {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .remove-member:hover {
+            background: #ff5252;
+        }
+        
+        .add-member-btn {
+            background: #2a8d96;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .add-member-btn:hover {
+            background: #1a6d75;
+        }
+        
+        .event-info-sidebar h3 {
+            color: #2a8d96;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #41ccd8;
+        }
+        
+        .event-card {
+            background: rgba(65, 204, 216, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #41ccd8;
+        }
+        
+        .event-card h4 {
+            color: #2a8d96;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .event-card p {
+            color: #555;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        
+        .event-card .event-date {
+            font-weight: 600;
+            color: #2a8d96;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 3px;
+        }
+        
+        .checkbox-group label {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        .checkbox-group a {
+            color: #41ccd8;
+            text-decoration: none;
+        }
+        
+        .checkbox-group a:hover {
+            color: #0798ff;
+            text-decoration: underline;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            background: #41ccd8;
+            color: white;
+            padding: 14px 25px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            background: #0798ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(7, 152, 255, 0.3);
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        @media (max-width: 768px) {
+            .registration-container {
+                flex-direction: column;
+            }
+            
+            .registration-form-container, .event-info-sidebar {
+                padding: 25px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img class="logo" src="https://i0.wp.com/ominfotechsales.com/wp-content/uploads/2022/12/ominfotech-removebg-preview.png?fit=995%2C251&ssl=1" alt="OM Infotech Logo">
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="event.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="login.html" id="loginLink"><i class="fas fa-user"></i> Login</a>
+                <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="registration-hero">
+        <div class="container">
+            <h1>Hackathon Registration</h1>
+            <p>Join the innovation revolution - Register for your preferred hackathon today!</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="alert alert-success" id="successAlert">
+            <i class="fas fa-check-circle"></i> Registration submitted successfully! You will receive a confirmation email shortly.
+        </div>
+        
+        <div class="alert alert-error" id="errorAlert">
+            <i class="fas fa-exclamation-circle"></i> Please fill in all required fields correctly.
+        </div>
+        
+        <div class="registration-container">
+            <div class="registration-form-container">
+                <h2>Registration Form</h2>
+                
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="eventSelect">Select Hackathon *</label>
+                        <select class="form-control" id="eventSelect" required>
+                            <option value="">-- Choose a Hackathon --</option>
+                            <option value="CodeStorm">CodeStorm Hackathon 2025 - Innovate with AI & Blockchain</option>
+                            <option value="Pentathon">PENTATHON Hackathon 2025 - National Level CTF Challenge & VAPT Exercise</option>
+                            <option value="HackTheFuture">Hack the Future 2025 - Innovating Intelligent Data Insights</option>
+                            <option value="Odoo">Odoo x CHARUSAT Hackathon'25 - Where Talent Meets Technology</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" class="form-control" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" class="form-control" id="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="institution">Institution/Organization *</label>
+                        <input type="text" class="form-control" id="institution" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="teamName">Team Name (if applicable)</label>
+                        <input type="text" class="form-control" id="teamName">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Team Members (Max: 4 including yourself)</label>
+                        
+                        <div id="teamMembersContainer">
+                            <!-- Team member fields will be added here dynamically -->
+                        </div>
+                        
+                        <button type="button" class="add-member-btn" id="addMemberBtn">
+                            <i class="fas fa-plus"></i> Add Team Member
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Technical Experience/Background</label>
+                        <textarea class="form-control" id="experience" rows="4" placeholder="Briefly describe your technical skills and experience..."></textarea>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <label for="agreeTerms">I agree to the <a href="terms.html" target="_blank">Terms and Conditions</a> and <a href="privacy.html" target="_blank">Privacy Policy</a> *</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="receiveUpdates">
+                        <label for="receiveUpdates">I would like to receive updates about upcoming events and opportunities</label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Registration</button>
+                </form>
+            </div>
+            
+            <div class="event-info-sidebar">
+                <h3>Upcoming Hackathons</h3>
+                
+                <div class="event-card">
+                    <h4>CodeStorm 2025</h4>
+                    <p class="event-date">February 15-16, 2025</p>
+                    <p>48-hour coding marathon focusing on AI & Blockchain solutions.</p>
+                </div>
+                
+                <div class="event-card">
+                    <h4>PENTATHON 2025</h4>
+                    <p class="event-date">June 15, 2025 (Deadline)</p>
+                    <p>National level CTF Challenge & VAPT Exercise for cybersecurity talent.</p>
+                </div>
+                
+                <div class="event-card">
+                    <h4>Hack the Future 2025</h4>
+                    <p class="event-date">August 21-23, 2025</p>
+                    <p>36-hour immersive challenge focusing on intelligent data insights.</p>
+                </div>
+                
+                <div class="event-card">
+                    <h4>Odoo x CHARUSAT</h4>
+                    <p class="event-date">March 1-2, 2025</p>
+                    <p>Premier coding marathon where talent meets technology.</p>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Need Help?</h3>
+                    <p><strong>Email:</strong> <a href="mailto:info@ominfotech.com">info@ominfotech.com</a></p>
+                    <p><strong>Phone:</strong> <a href="tel:+919328913412">+91 9328913412</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Om Infotech</h3>
+                    <p>Empowering businesses with innovative IT solutions since 2022. Specializing in software development, web design, and IT consulting.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="login.html">Login</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> info@ominfotech.com</p>
+                    <p><i class="fas fa-phone"></i> +91 9328913412</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Murti complex, near Santram Mandir, Nadiad-387001</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Newsletter</h3>
+                    <p>Subscribe to our newsletter to get updates on our latest services and offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" style="padding:10px; width:100%; margin-bottom:10px; border-radius:5px; border:none;">
+                        <button type="submit" style="background:#41ccd8; color:white; border:none; padding:10px 15px; border-radius:5px; width:100%; cursor:pointer;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 OM Infotech. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    menuToggle.classList.toggle('active');
+                    
+                    // Toggle aria-expanded for accessibility
+                    const isExpanded = navLinks.classList.contains('active');
+                    menuToggle.setAttribute('aria-expanded', isExpanded);
+                });
+                
+                // Close mobile menu when clicking on a link
+                const navItems = navLinks.querySelectorAll('a');
+                navItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    const isClickInsideNav = navLinks.contains(event.target) || menuToggle.contains(event.target);
+                    if (!isClickInsideNav && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                
+                // Handle escape key to close menu
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+            
+            // Update navigation based on login status
+            updateNavigation();
+            
+            // Set active page highlighting
+            setActivePage();
+            
+            // Initialize team member functionality
+            initializeTeamMembers();
+            
+            // Initialize form submission
+            initializeFormSubmission();
+        });
+        
+        // Function to set active page in navigation
+        function setActivePage() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Update navigation based on login status
+        function updateNavigation() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const loginLink = document.getElementById('loginLink');
+            
+            if (currentUser && loginLink) {
+                // Replace login link with profile and logout
+                loginLink.innerHTML = '<i class="fas fa-user"></i> Profile';
+                loginLink.href = 'profile.html';
+                
+                // Check if logout button already exists
+                if (!document.getElementById('logoutBtn')) {
+                    const logoutLink = document.createElement('a');
+                    logoutLink.href = '#';
+                    logoutLink.id = 'logoutBtn';
+                    logoutLink.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
+                    logoutLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('currentUser');
+                        showAlert('Logged out successfully!', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1000);
+                    });
+                    
+                    document.getElementById('navLinks').appendChild(logoutLink);
+                }
+            } else {
+                // Ensure login link is restored if user logs out
+                const existingLoginLink = document.querySelector('a[href="profile.html"]');
+                if (existingLoginLink) {
+                    existingLoginLink.innerHTML = '<i class="fas fa-user"></i> Login';
+                    existingLoginLink.href = 'login.html';
+                    existingLoginLink.id = 'loginLink';
+                }
+                
+                // Remove logout button if exists
+                const logoutBtn = document.getElementById('logoutBtn');
+                if (logoutBtn) {
+                    logoutBtn.remove();
+                }
+            }
+            
+            // Re-set active page after navigation update
+            setActivePage();
+        }
+        
+        // Team Members Functionality
+        function initializeTeamMembers() {
+            const addMemberBtn = document.getElementById('addMemberBtn');
+            const teamMembersContainer = document.getElementById('teamMembersContainer');
+            let memberCount = 0;
+            
+            addMemberBtn.addEventListener('click', function() {
+                if (memberCount >= 3) {
+                    showAlert('Maximum team size is 4 members (including yourself)', 'error');
+                    return;
+                }
+                
+                memberCount++;
+                const memberId = `member${memberCount}`;
+                
+                const memberDiv = document.createElement('div');
+                memberDiv.className = 'team-member';
+                memberDiv.id = memberId;
+                
+                memberDiv.innerHTML = `
+                    <div class="team-member-header">
+                        <h4>Team Member ${memberCount}</h4>
+                        <button type="button" class="remove-member" data-member="${memberId}">Remove</button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="${memberId}-name">Full Name</label>
+                            <input type="text" class="form-control" id="${memberId}-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="${memberId}-email">Email</label>
+                            <input type="email" class="form-control" id="${memberId}-email">
+                        </div>
+                    </div>
+                `;
+                
+                teamMembersContainer.appendChild(memberDiv);
+                
+                // Add event listener to remove button
+                const removeBtn = memberDiv.querySelector('.remove-member');
+                removeBtn.addEventListener('click', function() {
+                    memberDiv.remove();
+                    memberCount--;
+                });
+            });
+        }
+        
+        // Form Submission
+        function initializeFormSubmission() {
+            const registrationForm = document.getElementById('registrationForm');
+            const successAlert = document.getElementById('successAlert');
+            const errorAlert = document.getElementById('errorAlert');
+            
+            registrationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic validation
+                const requiredFields = registrationForm.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.style.borderColor = '#ff6b6b';
+                        isValid = false;
+                    } else {
+                        field.style.borderColor = '#ddd';
+                    }
+                });
+                
+                // Email validation
+                const emailField = document.getElementById('email');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (emailField.value && !emailRegex.test(emailField.value)) {
+                    emailField.style.borderColor = '#ff6b6b';
+                    isValid = false;
+                }
+                
+                if (!isValid) {
+                    errorAlert.style.display = 'block';
+                    successAlert.style.display = 'none';
+                    window.scrollTo(0, 0);
+                    return;
+                }
+                
+                // Get form data
+                const formData = {
+                    event: document.getElementById('eventSelect').value,
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    institution: document.getElementById('institution').value,
+                    teamName: document.getElementById('teamName').value,
+                    experience: document.getElementById('experience').value,
+                    receiveUpdates: document.getElementById('receiveUpdates').checked
+                };
+                
+                // Get team members data
+                const teamMembers = [];
+                const memberElements = document.querySelectorAll('.team-member');
+                memberElements.forEach(member => {
+                    const nameInput = member.querySelector('input[type="text"]');
+                    const emailInput = member.querySelector('input[type="email"]');
+                    
+                    if (nameInput && nameInput.value.trim()) {
+                        teamMembers.push({
+                            name: nameInput.value,
+                            email: emailInput.value
+                        });
+                    }
+                });
+                
+                formData.teamMembers = teamMembers;
+                
+                // Store in localStorage (in a real app, this would be sent to a server)
+                const registrations = JSON.parse(localStorage.getItem('hackathonRegistrations') || '[]');
+                formData.id = Date.now().toString();
+                formData.timestamp = new Date().toISOString();
+                registrations.push(formData);
+                localStorage.setItem('hackathonRegistrations', JSON.stringify(registrations));
+                
+                // Show success message
+                successAlert.style.display = 'block';
+                errorAlert.style.display = 'none';
+                registrationForm.reset();
+                
+                // Clear team members
+                document.getElementById('teamMembersContainer').innerHTML = '';
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+                
+                // In a real application, you would send the data to a server here
+                console.log('Registration data:', formData);
+            });
+        }
+        
+        // Alert function
+        function showAlert(message, type) {
+            const existingAlert = document.querySelector('.alert');
+            if (existingAlert) {
+                existingAlert.remove();
+            }
+
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alert.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+            `;
+
+            if (type === 'success') {
+                alert.style.background = '#4CAF50';
+            } else {
+                alert.style.background = '#f44336';
+            }
+
+            document.body.appendChild(alert);
+
+            setTimeout(() => {
+                alert.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - OM INFOTECH</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="logo-container">
+    <img class="logo" src="https://i0.wp.com/ominfotechsales.com/wp-content/uploads/2022/12/ominfotech-removebg-preview.png?fit=995%2C251&ssl=1" alt="OM Infotech Logo">
+</div>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="event.html"><i class="fas fa-calendar-alt"></i> Events</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="login.html" class="active" id="authLink"><i class="fas fa-user"></i> Login</a>
+            <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+        </div>
+    </div>
+</nav>
+
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Login to Your Account</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <i class="fas fa-envelope input-icon"></i>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <i class="fas fa-lock input-icon"></i>
+            </div>
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox" name="remember">
+                    <span class="checkmark"></span>
+                    Remember me
+                </label>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+            <button type="submit" class="auth-btn">Login</button>
+        </form>
+        <div class="auth-footer">
+            <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+
+        // Check if user is already logged in
+        if (localStorage.getItem('currentUser')) {
+            window.location.href = 'profile.html';
+        }
+
+        // Update navigation
+        updateNavigation();
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(loginForm);
+            const loginData = {
+                email: formData.get('email').trim(),
+                password: formData.get('password')
+            };
+
+            // Validation
+            if (!validateForm(loginData)) {
+                return;
+            }
+
+            // Login user
+            loginUser(loginData);
+        });
+
+        function validateForm(data) {
+            // Check if all fields are filled
+            if (!data.email || !data.password) {
+                showAlert('Please fill in all fields', 'error');
+                return false;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                showAlert('Please enter a valid email address', 'error');
+                return false;
+            }
+
+            return true;
+        }
+
+        function loginUser(loginData) {
+            // Show loading state
+            const submitBtn = loginForm.querySelector('.auth-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Logging in...';
+            submitBtn.disabled = true;
+
+            // Simulate API call delay
+            setTimeout(() => {
+                // Get users from localStorage
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                const user = users.find(u => u.email === loginData.email && u.password === loginData.password);
+                
+                if (user) {
+                    // Store user data in localStorage
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    showAlert('Login successful! Redirecting to profile...', 'success');
+
+                    // Redirect to profile page
+                    setTimeout(() => {
+                        window.location.href = 'profile.html';
+                    }, 1500);
+                } else {
+                    showAlert('Invalid email or password', 'error');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            }, 1000);
+        }
+
+        function showAlert(message, type) {
+            // Remove existing alerts
+            const existingAlert = document.querySelector('.alert');
+            if (existingAlert) {
+                existingAlert.remove();
+            }
+
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alert.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+            `;
+
+            if (type === 'success') {
+                alert.style.background = '#4CAF50';
+            } else {
+                alert.style.background = '#f44336';
+            }
+
+            document.body.appendChild(alert);
+
+            // Remove alert after 3 seconds
+            setTimeout(() => {
+                alert.remove();
+            }, 3000);
+        }
+
+        // Update navigation based on login status
+        function updateNavigation() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const authLink = document.getElementById('authLink');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (currentUser) {
+                // Update auth links to profile
+                if (authLink) {
+                    authLink.innerHTML = '<i class="fas fa-user"></i> Profile';
+                    authLink.href = 'profile.html';
+                }
+                
+                // Check if logout button already exists
+                if (!document.getElementById('logoutBtn')) {
+                    const logoutLink = document.createElement('a');
+                    logoutLink.href = '#';
+                    logoutLink.id = 'logoutBtn';
+                    logoutLink.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
+                    logoutLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('currentUser');
+                        showAlert('Logged out successfully!', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1000);
+                    });
+                    
+                    navLinks.appendChild(logoutLink);
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
