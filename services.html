@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | OM INFOTECH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS from index.css */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo-container {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+        .logo {
+            height: 80px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+        nav {
+            background: linear-gradient(135deg, #41ccd8 0%, #2a8d96 100%);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+        }
+        .nav-links {
+            display: flex;
+            transition: all 0.3s ease;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 30px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            color: #2a8d96;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #41ccd8, #0798ff);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: #41ccd8;
+        }
+        .footer-section p, .footer-section a {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: #41ccd8;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        .social-icons a:hover {
+            background: #41ccd8;
+            transform: translateY(-3px);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1rem;
+        }
+        
+        /* Page-specific styles for Services */
+        .services-hero {
+            background: linear-gradient(rgba(7, 152, 255, 0.8), rgba(7, 152, 255, 0.9)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+            margin-bottom: 40px;
+        }
+        .services-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .services-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .services-overview {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 60px;
+            line-height: 1.8;
+            text-align: center;
+        }
+        .services-overview h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #2a8d96;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .services-overview h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #41ccd8, #0798ff);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        .services-overview p {
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+        .services-detailed {
+            margin-bottom: 60px;
+        }
+        .service-detail-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            display: flex;
+            transition: all 0.3s ease;
+        }
+        .service-detail-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+        .service-image {
+            flex: 0 0 40%;
+            background-size: cover;
+            background-position: center;
+        }
+        .service-content {
+            flex: 1;
+            padding: 40px;
+        }
+        .service-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #2a8d96;
+        }
+        .service-content p {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.7;
+        }
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .service-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .service-feature i {
+            color: #41ccd8;
+            font-size: 1.1rem;
+        }
+        .service-cta {
+            display: inline-block;
+            background: #41ccd8;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        .service-cta:hover {
+            background: #0798ff;
+            transform: translateY(-2px);
+        }
+        .process-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9f7f9 100%);
+            padding: 80px 0;
+            border-radius: 15px;
+            margin-bottom: 60px;
+        }
+        .process-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: #2a8d96;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .process-section h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #41ccd8, #0798ff);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .process-step {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .process-step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #41ccd8, #0798ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0 auto 20px;
+        }
+        .process-step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #2a8d96;
+        }
+        .consultation-cta {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        .consultation-cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        .consultation-cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .consultation-btn {
+            background: #ff7b00;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .consultation-btn:hover {
+            background: #ff8c1a;
+            transform: scale(1.05);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .logo {
+                height: 70px;
+            }
+            nav a {
+                font-size: 15px;
+                padding: 8px 12px;
+            }
+        }
+        @media (max-width: 768px) {
+            .logo-container {
+                padding: 12px 0;
+            }
+            .logo {
+                height: 60px;
+            }
+            .nav-container {
+                padding: 0 15px;
+                height: 60px;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .nav-links {
+                position: fixed;
+                top: 132px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #41ccd8 0%, #2a8d96 100%);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            nav a {
+                width: 90%;
+                margin: 5px 0;
+                padding: 12px 15px;
+                justify-content: center;
+                border-radius: 8px;
+                font-size: 16px;
+            }
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+            .services-hero h1 {
+                font-size: 2.2rem;
+            }
+            .services-hero p {
+                font-size: 1rem;
+            }
+            .service-detail-card {
+                flex-direction: column;
+            }
+            .service-image {
+                height: 200px;
+                flex: none;
+            }
+            .services-overview, .service-content {
+                padding: 30px 25px;
+            }
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .services-hero {
+                padding: 60px 15px;
+            }
+            .services-hero h1 {
+                font-size: 1.8rem;
+            }
+            .service-features {
+                grid-template-columns: 1fr;
+            }
+            .consultation-cta h2 {
+                font-size: 1.8rem;
+            }
+            .consultation-cta p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img class="logo" src="https://i0.wp.com/ominfotechsales.com/wp-content/uploads/2022/12/ominfotech-removebg-preview.png?fit=995%2C251&ssl=1" alt="OM Infotech Logo">
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="event.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="login.html" id="loginLink"><i class="fas fa-user"></i> Login</a>
+                <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="services-hero">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Comprehensive IT solutions tailored to drive your business growth and digital transformation.</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <section class="services-overview">
+            <h2>What We Offer</h2>
+            <p>At OM INFOTECH, we provide a wide range of IT services designed to meet the unique needs of modern businesses. From custom software development to comprehensive IT consulting, our solutions are built to drive efficiency, innovation, and growth.</p>
+            <p>Our team of experienced professionals stays at the forefront of technology trends to deliver solutions that give your business a competitive edge.</p>
+        </section>
+        
+        <section class="services-detailed">
+            <div class="service-detail-card">
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="service-content">
+                    <h3>Custom Software Development</h3>
+                    <p>We design and develop bespoke software solutions tailored to your specific business requirements. Our development process focuses on creating scalable, secure, and user-friendly applications that solve real business challenges.</p>
+                    <p>Whether you need a customer relationship management system, inventory management software, or a specialized business application, we have the expertise to deliver solutions that drive efficiency and growth.</p>
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Web Applications</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Desktop Applications</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Mobile Apps</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>API Development</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="service-cta">Get a Quote</a>
+                </div>
+            </div>
+            
+            <div class="service-detail-card">
+                <div class="service-content">
+                    <h3>Web Design & Development</h3>
+                    <p>We create engaging, responsive websites that not only look great but also convert visitors into customers. Our web development approach combines aesthetic design with technical excellence to deliver exceptional user experiences.</p>
+                    <p>From simple brochure websites to complex e-commerce platforms, we build websites that are fast, secure, and optimized for search engines. We focus on creating digital experiences that reflect your brand identity while driving business results.</p>
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Responsive Design</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>E-commerce Solutions</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>CMS Development</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>SEO Optimization</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="service-cta">Start Your Project</a>
+                </div>
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+            </div>
+            
+            <div class="service-detail-card">
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="service-content">
+                    <h3>Cloud Solutions</h3>
+                    <p>Leverage the power of cloud computing to enhance your business agility and scalability. We provide comprehensive cloud services including migration, implementation, and management of cloud infrastructure.</p>
+                    <p>Our cloud solutions help businesses reduce IT costs, improve collaboration, and ensure business continuity. We work with leading cloud platforms to deliver secure and reliable cloud services tailored to your needs.</p>
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Cloud Migration</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Infrastructure Setup</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Cloud Security</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>24/7 Monitoring</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="service-cta">Explore Cloud Services</a>
+                </div>
+            </div>
+            
+            <div class="service-detail-card">
+                <div class="service-content">
+                    <h3>IT Consulting</h3>
+                    <p>Our IT consulting services provide expert guidance to help you navigate technological challenges and make informed decisions. We analyze your business processes and technology infrastructure to identify opportunities for improvement.</p>
+                    <p>From technology strategy development to implementation planning, our consultants work closely with you to align technology with your business goals and drive digital transformation.</p>
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Technology Strategy</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Digital Transformation</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>IT Infrastructure Audit</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Security Assessment</span>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="service-cta">Schedule Consultation</a>
+                </div>
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+            </div>
+        </section>
+        
+        <section class="process-section">
+            <div class="container">
+                <h2>Our Process</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3>Discovery & Planning</h3>
+                        <p>We begin by understanding your business needs, goals, and challenges to create a comprehensive project plan.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3>Design & Development</h3>
+                        <p>Our team designs and develops your solution with regular updates and opportunities for feedback.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3>Testing & Quality Assurance</h3>
+                        <p>We rigorously test every aspect of your solution to ensure it meets quality standards and requirements.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3>Deployment & Support</h3>
+                        <p>We deploy your solution and provide ongoing support to ensure optimal performance and satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="consultation-cta">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Schedule a free consultation with our experts to discuss how our services can help achieve your business objectives.</p>
+            <button class="consultation-btn" onclick="location.href='contact.html'">Book a Free Consultation</button>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Om Infotech</h3>
+                    <p>Empowering businesses with innovative IT solutions since 2022. Specializing in software development, web design, and IT consulting.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="login.html">Login</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> info@ominfotech.com</p>
+                    <p><i class="fas fa-phone"></i> +91 9328913412</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Murti complex, near Santram Mandir, Nadiad-387001</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Newsletter</h3>
+                    <p>Subscribe to our newsletter to get updates on our latest services and offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" style="padding:10px; width:100%; margin-bottom:10px; border-radius:5px; border:none;">
+                        <button type="submit" style="background:#41ccd8; color:white; border:none; padding:10px 15px; border-radius:5px; width:100%; cursor:pointer;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 OM Infotech. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    menuToggle.classList.toggle('active');
+                    
+                    // Toggle aria-expanded for accessibility
+                    const isExpanded = navLinks.classList.contains('active');
+                    menuToggle.setAttribute('aria-expanded', isExpanded);
+                });
+                
+                // Close mobile menu when clicking on a link
+                const navItems = navLinks.querySelectorAll('a');
+                navItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    const isClickInsideNav = navLinks.contains(event.target) || menuToggle.contains(event.target);
+                    if (!isClickInsideNav && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                
+                // Handle escape key to close menu
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+            
+            // Update navigation based on login status
+            updateNavigation();
+            
+            // Set active page highlighting
+            setActivePage();
+        });
+        
+        // Function to set active page in navigation
+        function setActivePage() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Update navigation based on login status
+        function updateNavigation() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const loginLink = document.getElementById('loginLink');
+            
+            if (currentUser && loginLink) {
+                // Replace login link with profile and logout
+                loginLink.innerHTML = '<i class="fas fa-user"></i> Profile';
+                loginLink.href = 'profile.html';
+                
+                // Check if logout button already exists
+                if (!document.getElementById('logoutBtn')) {
+                    const logoutLink = document.createElement('a');
+                    logoutLink.href = '#';
+                    logoutLink.id = 'logoutBtn';
+                    logoutLink.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
+                    logoutLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('currentUser');
+                        showAlert('Logged out successfully!', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1000);
+                    });
+                    
+                    document.getElementById('navLinks').appendChild(logoutLink);
+                }
+            } else {
+                // Ensure login link is restored if user logs out
+                const existingLoginLink = document.querySelector('a[href="profile.html"]');
+                if (existingLoginLink) {
+                    existingLoginLink.innerHTML = '<i class="fas fa-user"></i> Login';
+                    existingLoginLink.href = 'login.html';
+                    existingLoginLink.id = 'loginLink';
+                }
+                
+                // Remove logout button if exists
+                const logoutBtn = document.getElementById('logoutBtn');
+                if (logoutBtn) {
+                    logoutBtn.remove();
+                }
+            }
+            
+            // Re-set active page after navigation update
+            setActivePage();
+        }
+        
+        // Alert function
+        function showAlert(message, type) {
+            const existingAlert = document.querySelector('.alert');
+            if (existingAlert) {
+                existingAlert.remove();
+            }
+
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alert.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+            `;
+
+            if (type === 'success') {
+                alert.style.background = '#4CAF50';
+            } else {
+                alert.style.background = '#f44336';
+            }
+
+            document.body.appendChild(alert);
+
+            setTimeout(() => {
+                alert.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
